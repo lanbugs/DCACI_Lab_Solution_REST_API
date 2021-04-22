@@ -1,3 +1,5 @@
+
+
 import requests
 import json
 from pprint import pprint
@@ -46,3 +48,28 @@ result = requests.post(f'{URL}api/node/mo/uni/fabric/configexp-defaultOneTime.js
 
 print('Return code: {code}'.format(code=result.status_code))
 pprint(result.content)
+
+# Rollback to Lab 4 snapshot
+FILE_TO_RESTORE = 'ce2_defaultOneTime_tn-APILAB-GUI-2021-04-22T15-57-28.tar.gz'
+
+payload_task = {
+    'configImportP' : {
+        'attributes': {
+            'dn': 'uni/fabric/configimp-default',
+            'name': 'default',
+            'snapshot': 'true',
+            'adminSt': 'triggered',
+            'fileName': FILE_TO_RESTORE,
+            'importType': 'replace',
+            'importMode': 'atomic',
+            'rn': 'configimp-default',
+            'status': 'created,modified',
+        },
+        'children': []
+    }
+}
+
+result_rb = requests.post(f'{URL}api/node/mo/uni/fabric/configimp-default.json', data=json.dumps(payload_task), verify = False, cookies=COOKIES)
+
+print('Return code: {code}'.format(code=result_rb.status_code))
+pprint(result_rb.content)
