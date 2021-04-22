@@ -69,8 +69,19 @@ FILTERS = [
             'dToPort': '22'
             }
             ]   
-    }, 
-   {
+    },
+    {
+        'name': 'tomcat',
+        'rules': [{
+            'name': 'tomcat',
+            'etherT': 'ip',
+            'prot': 'tcp',
+            'dFromPort': '8080',
+            'dToPort': '8080'
+        }
+        ]
+    },
+    {
         'name': 'DNS',
         'rules': [
             {
