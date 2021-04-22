@@ -26,73 +26,69 @@ TENANT = 'APILAB-GUI'
 FILTERS = [
     {
         'name': 'http',
-        'rules': [
-        {
-        'name': 'http',
-        'etherT': 'ip',
-        'prot': 'tcp',
-        'dFromPort': 'http',
-        'dToPort': 'http'
-        }
-        ]
+        'rules': [ {
+            'name': 'http',
+            'etherT': 'ip',
+            'prot': 'tcp',
+            'dFromPort': 'http',
+            'dToPort': 'http'
+            }
+            ]
     },
     {
         'name': 'https',
-        'rules': [
-        {
-        'name': 'https',
-        'etherT': 'ip',
-        'prot': 'tcp',
-        'dFromPort': 'https',
-        'dToPort': 'https'
-        }
-        ]
+        'rules': [ {
+            'name': 'https',
+            'etherT': 'ip',
+            'prot': 'tcp',
+            'dFromPort': 'https',
+            'dToPort': 'https'
+            }
+            ]
     },   
     {
         'name': 'mysql',
-        'rules': [
-        {
-        'name': 'mysql',
-        'etherT': 'ip',
-        'prot': 'tcp',
-        'sFromPort': '1024',
-        'sToPort': '65535',
-        'dFromPort': '3306',
-        'dToPort': '3306'
-        }
-        ]
+        'rules': [ {
+            'name': 'mysql',
+            'etherT': 'ip',
+            'prot': 'tcp',
+            'sFromPort': '1024',
+            'sToPort': '65535',
+            'dFromPort': '3306',
+            'dToPort': '3306'
+            }
+            ]
     }, 
     {
         'name': 'ssh',
-        'rules': [
-        {
-        'name': 'ssh',
-        'etherT': 'ip',
-        'prot': 'tcp',
-        'dFromPort': '22',
-        'dToPort': '22'
-        }
-        ]
+        'rules': [ {
+            'name': 'ssh',
+            'etherT': 'ip',
+            'prot': 'tcp',
+            'dFromPort': '22',
+            'dToPort': '22'
+            }
+            ]   
     }, 
    {
         'name': 'DNS',
         'rules': [
-        {
-        'name': 'dns-udp',
-        'etherT': 'ip',
-        'prot': 'udp',
-        'dFromPort': '53',
-        'dToPort': '53'
-        },
-        {
-        'name': 'dns-tcp',
-        'etherT': 'ip',
-        'prot': 'tcp',
-        'dFromPort': '53',
-        'dToPort': '53'
-        }
+            {
+            'name': 'dns-udp',
+            'etherT': 'ip',
+            'prot': 'udp',
+            'dFromPort': '53',
+            'dToPort': '53'
+            },
+            {
+            'name': 'dns-tcp',
+            'etherT': 'ip',
+            'prot': 'tcp',
+            'dFromPort': '53',
+            'dToPort': '53'
+            }
         ]
-    },        
+    }        
 ]
 
 
@@ -128,11 +124,11 @@ for flt in FILTERS:
             
         if 'sToPort' in rule.keys():
             sTOP = rule['sToPort']
-            genfilter['sToPort'] = sTOP
+            genfilter['vzEntry']['attributes']['sToPort'] = sTOP
             
         if 'sFromPort' in rule.keys():
             sFROMP = rule['sFromPort']
-            genfilter['sFromPort'] = sFROMP
+            genfilter['vzEntry']['attributes']['sFromPort'] = sFROMP
 
         
         payload_filter_childs.append(genfilter)
