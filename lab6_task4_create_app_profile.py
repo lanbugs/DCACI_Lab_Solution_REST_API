@@ -37,7 +37,7 @@ payload_task_ap = {
     }
 }
 
-result_ap = requests.post(f'{URL}api/node/mo/uni/tn-APILAB-GUI/ap-{AP_NAME}.json', data=json.dumps(payload_task_ap), verify = False, cookies=COOKIES)
+result_ap = requests.post(f'{URL}api/node/mo/uni/tn-{TENANT}/ap-{AP_NAME}.json', data=json.dumps(payload_task_ap), verify = False, cookies=COOKIES)
 
 print('Return code: {code}'.format(code=result_ap.status_code))
 pprint(result_ap.content)
