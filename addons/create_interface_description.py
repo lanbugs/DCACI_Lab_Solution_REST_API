@@ -72,7 +72,7 @@ payload_task = {
     }
 }
 
-result = requests.post(f'{URL}api/node/mo/uni/infra/hpaths-{LEAF_ID}_eth1_14.json', data=json.dumps(payload_task), verify = False, cookies=COOKIES)
+result = requests.post(f'{URL}api/node/mo/uni/infra/hpaths-{LEAF_ID}_eth{MOD_ID}_{PORT_ID}.json', data=json.dumps(payload_task), verify = False, cookies=COOKIES)
 
 print('Return code: {code}'.format(code=result.status_code))
 pprint(result.content)
